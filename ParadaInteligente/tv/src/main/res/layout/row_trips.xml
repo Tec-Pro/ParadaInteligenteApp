@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="12"
+        android:baselineAligned="false"
+        android:showDividers="middle"
+        android:layout_marginLeft="10dp"
+        android:divider="#f03e3d40">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.21">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Río Cuarto"
+                android:id="@+id/lbl_destiny"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:textColor="#f9f90800"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Los Cóndores - Berrotarán - Elena"
+                android:id="@+id/lbl_route"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="12:50"
+            android:id="@+id/lbl_time"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="6.95" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.56"
+            android:weightSum="2">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Con demora"
+                android:id="@+id/lbl_status"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:textColor="#f9f90800"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="bottom" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5 min."
+                android:id="@+id/lbl_demorated"
+                android:textStyle="normal"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center_horizontal"
+                android:layout_weight="1"
+                android:visibility="visible" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="125"
+            android:id="@+id/lbl_unity"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1.95" />
+
+        <TextView
+            android:layout_width="112dp"
+            android:layout_height="match_parent"
+            android:text="44 a 49"
+            android:id="@+id/lbl_platform"
+            android:textStyle="normal"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            android:gravity="center"
+            android:layout_weight="1.26" />
+    </LinearLayout>
+
+</LinearLayout>
