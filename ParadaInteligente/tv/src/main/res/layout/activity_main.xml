@@ -11,14 +11,14 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="3"
+        android:weightSum="2"
         android:baselineAligned="false">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.50"
+            android:layout_weight="0.30"
             android:weightSum="3"
             android:gravity="left"
             android:layout_marginLeft="10dp">
@@ -70,9 +70,9 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1.50"
+            android:layout_weight="1.40"
             android:weightSum="1"
             android:layout_gravity="center">
 
@@ -86,23 +86,28 @@
                 android:textStyle="bold"
                 android:gravity="center_vertical|center_horizontal"
                 android:layout_gravity="center"
-                android:layout_weight="0.50" />
+                android:layout_weight="0.50"
+                android:typeface="serif" />
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
+            android:layout_weight="0.30"
             android:weightSum="1">
 
-            <ImageView
+            <ImageButton
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/imageView"
-                android:src="@mipmap/ic_launcher"
+                android:id="@+id/btn_configuration"
+                android:background="@android:color/white"
+                android:scaleType="centerInside"
                 android:onClick="clickConfiguration"
-                android:layout_marginRight="10dp" />
+                android:focusable="true"
+                android:clickable="true"
+                android:focusableInTouchMode="false"
+                android:src="@drawable/ic_launcher" />
         </LinearLayout>
     </LinearLayout>
 

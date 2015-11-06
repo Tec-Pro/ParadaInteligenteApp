@@ -1,8 +1,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tecpro.paradainteligente">
 
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+
     <application android:allowBackup="true" android:label="@string/app_name"
-        android:icon="@mipmap/ic_launcher" android:supportsRtl="true"
+        android:icon="@drawable/ic_launcher" android:supportsRtl="true"
         android:theme="@style/Theme.Leanback">
         <activity android:name="paradainteligente.MainActivity" >
             <intent-filter>
@@ -17,5 +19,10 @@
             android:theme="@style/Theme.Leanback" />
     </application>
 
+    <receiver android:name=".BootReciever">
+        <intent-filter >
+            <action android:name="android.intent.action.BOOT_COMPLETED"/>
+        </intent-filter>
+    </receiver>
 
 </manifest>

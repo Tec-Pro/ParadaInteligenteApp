@@ -2,11 +2,15 @@ package paradainteligente;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.Icon;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.BaseAdapter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.tecpro.paradainteligente.R;
 
@@ -27,6 +31,8 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         listView = (ListView) findViewById(R.id.listview_trips);
+        focusButtonConfiguration();
+
 
         /**
          * ACA DEBERÍAS OBTENER EL ID DE LA BOLETERÍA GUARDADA EN EL SHAREDPREFERENCES
@@ -40,6 +46,8 @@ public class MainActivity extends Activity {
          * idBoleteria = ID_GUARDADO_EN_SHARED_PREFERENCES
          */
         loadListView();
+        this.listView.requestFocus();
+
         threadTimeAndUpdate();
     }
 
@@ -74,6 +82,23 @@ public class MainActivity extends Activity {
         adaptador = new AdaptorTrips(this,trips);
         listView.setAdapter(adaptador);
     }
+    private void focusButtonConfiguration(){
+        ImageButton btnConfig = (ImageButton) findViewById(R.id.btn_configuration);
+        btnConfig.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (!hasFocus) {
+                    ((ImageButton) v).setImageResource(R.drawable.ic_launcher);
+
+                }
+                else{
+                    ((ImageButton) v).setImageResource(android.R.drawable.ic_menu_preferences);
+
+                }
+            }
+        });
+    }
+
     public void clickConfiguration(View v){
         int requestCode=1;
         Intent intent = new Intent(this, Configuration.class);//lanzo actividad para configuracion
@@ -89,6 +114,7 @@ public class MainActivity extends Activity {
         switch (requestCode) {
             case 1:
                 idBoleteria = data.getIntExtra("id_boleteria",1);
+                this.listView.requestFocus();
                 /**
                  * ACA DEBERÍAS GUARDAR EL ID DE LA BOLETERIA
                  */
