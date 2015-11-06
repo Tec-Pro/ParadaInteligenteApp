@@ -21,9 +21,12 @@ public class Configuration extends Activity{
         super.onCreate(savedInstanceState);
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_configuration);
-        //ACA LEVANTAR EL ID GUARDADO Y SETEARLO
+        int idBoleteria = getIntent().getIntExtra("id_boleteria",-1);
         EditText txtId = (EditText) findViewById(R.id.txt_id_boleteria);
-        txtId.setText("5");
+        if(idBoleteria==-1)
+            txtId.setText("");
+        else
+            txtId.setText(String.valueOf(idBoleteria));
         this.setFinishOnTouchOutside(false);
         //Grab the window of the dialog, and change the width
         WindowManager.LayoutParams lp = new WindowManager.LayoutParams();
@@ -33,6 +36,7 @@ public class Configuration extends Activity{
         lp.width = WindowManager.LayoutParams.MATCH_PARENT;
         lp.height = WindowManager.LayoutParams.WRAP_CONTENT;
         window.setAttributes(lp);
+
     }
 
     public void clickAcept(View v){

@@ -9,61 +9,78 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="12"
+        android:weightSum="18"
         android:baselineAligned="false"
         android:showDividers="middle"
         android:layout_marginLeft="10dp"
-        android:divider="#f03e3d40">
+        android:divider="#f03e3d40"
+        android:layout_marginRight="20dp"
+        android:layout_gravity="center">
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.21">
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:weightSum="2"
+            android:layout_weight="5.5">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="Río Cuarto"
                 android:id="@+id/lbl_destiny"
                 android:textStyle="normal"
                 android:textSize="20sp"
                 android:textColor="#f9f90800"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="Los Cóndores - Berrotarán - Elena"
                 android:id="@+id/lbl_route"
                 android:textStyle="normal"
                 android:textSize="15sp"
                 android:textColor="@android:color/black"
-                android:layout_gravity="center_horizontal" />
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="1" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="12:50"
-            android:id="@+id/lbl_time"
-            android:textStyle="normal"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
             android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_weight="6.95" />
+            android:layout_weight="5.5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="12:50"
+                android:id="@+id/lbl_time"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_weight="5.2" />
+        </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.56"
-            android:weightSum="2">
+            android:weightSum="2"
+            android:layout_gravity="center"
+            android:layout_weight="2.5">
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="Con demora"
                 android:id="@+id/lbl_status"
                 android:textStyle="normal"
@@ -71,42 +88,64 @@
                 android:textColor="#f9f90800"
                 android:layout_gravity="center"
                 android:layout_weight="1"
-                android:gravity="bottom" />
+                android:gravity="center_vertical|center_horizontal" />
 
             <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:text="5 min."
                 android:id="@+id/lbl_demorated"
                 android:textStyle="normal"
                 android:textSize="15sp"
                 android:textColor="@android:color/black"
-                android:layout_gravity="center_horizontal"
+                android:layout_gravity="center"
                 android:layout_weight="1"
-                android:visibility="visible" />
+                android:visibility="visible"
+                android:gravity="center_horizontal" />
         </LinearLayout>
 
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="125"
-            android:id="@+id/lbl_unity"
-            android:textStyle="normal"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:gravity="center"
-            android:layout_weight="1.95" />
+            android:layout_weight="2"
+            android:layout_gravity="center">
 
-        <TextView
-            android:layout_width="112dp"
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="125"
+                android:id="@+id/lbl_unity"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="44 a 49"
-            android:id="@+id/lbl_platform"
-            android:textStyle="normal"
-            android:textSize="20sp"
-            android:textColor="@android:color/black"
-            android:gravity="center"
-            android:layout_weight="1.26" />
+            android:layout_weight="2.8"
+            android:weightSum="1"
+            android:layout_gravity="center"
+            android:measureWithLargestChild="false">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="44 a 49"
+                android:id="@+id/lbl_platform"
+                android:textStyle="normal"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_gravity="center"
+                android:typeface="sans"
+                android:layout_weight="1" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -20,7 +20,8 @@
             android:layout_height="match_parent"
             android:layout_weight="0.50"
             android:weightSum="3"
-            android:gravity="left">
+            android:gravity="left"
+            android:layout_marginLeft="10dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -100,7 +101,8 @@
                 android:layout_height="match_parent"
                 android:id="@+id/imageView"
                 android:src="@mipmap/ic_launcher"
-                android:onClick="clickConfiguration" />
+                android:onClick="clickConfiguration"
+                android:layout_marginRight="10dp" />
         </LinearLayout>
     </LinearLayout>
 
@@ -108,76 +110,81 @@
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
+        android:layout_gravity="center"
         android:background="#f03e3d40"
-        android:weightSum="12"
+        android:weightSum="18"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:text="DESTINO"
             android:id="@+id/textView5"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_weight="6.14"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="5.5"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_gravity="center" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:text="HORARIO PROGRAMADO"
             android:id="@+id/textView7"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_weight="2.5"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="5.2"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_gravity="center" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:text="ESTADO"
             android:id="@+id/textView8"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_weight="1.5"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="2.5"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_gravity="center" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:text="UNIDAD"
             android:id="@+id/textView6"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_weight="1.08"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="2"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_gravity="center" />
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
             android:text="PLATAFORMA"
             android:id="@+id/textView9"
             android:textStyle="bold"
             android:textSize="20sp"
-            android:layout_weight="0.78"
-            android:gravity="center_vertical|center_horizontal"
+            android:layout_weight="2.8"
+            android:gravity="center"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:layout_gravity="center" />
 
     </LinearLayout>
 
