@@ -83,10 +83,9 @@ public class MainActivity extends Activity {
             case 1:
                 idBoleteria = data.getIntExtra("id_boleteria",1);
                 this.listView.requestFocus();
-                /**
-                 * ACA DEBERÍAS GUARDAR EL ID DE LA BOLETERIA
-                 */
                 dataId.setId(String.valueOf(idBoleteria));
+                AsynCall = new AsyncCallerHorariosProximaSalida(getApplicationContext());
+                AsynCall.execute();
                 break;
         }
     }
@@ -149,10 +148,6 @@ public class MainActivity extends Activity {
                 });
                     AsynCall = new AsyncCallerHorariosProximaSalida(getApplicationContext());
                     AsynCall.execute();
-                    /**
-                     * ACA PODÉS LLAMAR AL RUNNABLE DEL WEB SERVICES Y TE EVITAS CORRER OTRO THREAD
-                     */
-
                       try {
                         Thread.sleep(60000);
                    } catch (InterruptedException e) {

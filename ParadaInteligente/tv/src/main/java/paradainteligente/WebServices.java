@@ -29,7 +29,7 @@ public class WebServices {
 
     public static ArrayList<Map<String,String>> getHorariosProximaSalida(int idBoleteria, Context context){
         String result;
-        ArrayList<String> ret = new ArrayList<>();
+        ArrayList<Map<String,String>> trips = new ArrayList<>();
         request = new SoapObject(NAMESPACE, horariosProximaSalida); //le digo que metodo voy a llamar
         request.addProperty("userWS","UsuarioLep"); //paso los parametros que pide el metodo
         request.addProperty("passWS","Lep1234");
@@ -60,15 +60,15 @@ public class WebServices {
               {"SalidaEstimada":"11:24 Hs","Localidades":"Villa Gral Belgrano  -  Cordoba Plaza","Unidad":"111","Plataforma":"3 - 5 - 6 - 7","destino":" A Cordoba Plaza","SalidaProgramada":"11:20 Hs","MinutosDemora":0,"Estado":"En Horario"},
               {"SalidaEstimada":"11:52 Hs","Localidades":"Cordoba Plaza  -  Villa Gral Belgrano  -  Santa Rosa Calam","Unidad":"116","Plataforma":"3 - 5 - 6 - 7","destino":" A Santa Rosa Calam","SalidaProgramada":"11:45 Hs","MinutosDemora":7,"Estado":"Con Demora"},
               {"SalidaEstimada":"12:05 Hs","Localidades":"Villa Gral Belgrano  -  Cordoba Plaza","Unidad":"Sin Unidad","Plataforma":"3 - 5 - 6 - 7","destino":" A Cordoba Plaza","SalidaProgramada":"12:05 Hs","MinutosDemora":0,"Estado":"En Horario"} */
-                ret.add(jsonObject.getString("SalidaEstimada"));
-                ret.add(jsonObject.getString("Localidades"));
-                ret.add(jsonObject.getString("Unidad"));
-                ret.add(jsonObject.getString("Plataforma"));
-                ret.add(jsonObject.getString("destino"));
-                ret.add(jsonObject.getString("SalidaProgramada"));
-                ret.add(jsonObject.getString("MinutosDemora"));
-                ret.add(jsonObject.getString("Estado"));
-
+                HashMap<String,String> ret =  new HashMap<>();
+                ret.put("time",jsonObject.getString("SalidaEstimada"));
+                ret.put("route", jsonObject.getString("Localidades"));
+                ret.put("unity", jsonObject.getString("Unidad"));
+                ret.put("platform", jsonObject.getString("Plataforma"));
+                ret.put("destiny", jsonObject.getString("destino"));
+                ret.put("demorated", jsonObject.getString("MinutosDemora"));
+                ret.put("status", jsonObject.getString("Estado"));
+                trips.add(ret);
                 i++;
             }
 
@@ -77,41 +77,9 @@ public class WebServices {
             e.printStackTrace();
         }
 
-        /**
-         * BORRAR ESTOOOOOOO DESPUÉEEES
-         *
-         *
-         *
-         *
-         */
-        ArrayList<Map<String,String>> trips = new ArrayList<>();
-        HashMap<String,String> trip =  new HashMap<>();
-        HashMap<String,String> trip2 =  new HashMap<>();
 
-        trip.put("destiny","Río Cuarto");
-        trip.put("route","Berrotarán - Baigorria - Elena");
-        trip.put("time","15:50");
-        trip.put("status","Con demora");
-        trip.put("demorated","5 min.");
-        trip.put("platform","44 a 55");
-        trip.put("unity", "152");
-        trips.add(trip);
-        trips.add(trip);
-        trips.add(trip);
-        trips.add(trip);
-        trips.add(trip);
-
-        trip2.put("destiny", "La concha de tu madre");
-        trip2.put("route","Berrotarán - Baigorria - Elena");
-        trip2.put("time","15:50");
-        trip2.put("status","En horario");
-        trip2.put("demorated","5 min.");
-        trip2.put("platform","44 a 55");
-        trip2.put("unity", "152");
-        trips.add(trip2);
-
-        trips.add(trip);
         return trips;
     }
 
 }
+
