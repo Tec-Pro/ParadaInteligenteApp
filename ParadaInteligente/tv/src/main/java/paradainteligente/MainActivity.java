@@ -1,10 +1,13 @@
 package paradainteligente;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.Icon;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Pair;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
@@ -26,6 +29,9 @@ public class MainActivity extends Activity {
     public BaseAdapter adaptador;
     ListView listView;
     int idBoleteria=-1;
+    PreferencesUsing dataId;
+    AsyncCallerHorariosProximaSalida AsynCall;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,18 +39,16 @@ public class MainActivity extends Activity {
         listView = (ListView) findViewById(R.id.listview_trips);
         focusButtonConfiguration();
 
+        dataId = new PreferencesUsing(MainActivity.this);
+        dataId.init();
+        if (dataId.getId().equals("-")){
+            clickConfiguration(null);
+        } else {
+            idBoleteria = Integer.valueOf(dataId.getId());
+        }
 
-        /**
-         * ACA DEBERÍAS OBTENER EL ID DE LA BOLETERÍA GUARDADA EN EL SHAREDPREFERENCES
-         * EN CASO DE SER NULO, O NO EXISTIR EL SHARED
-         * DESCOMENTAR ESTO
-         *
-         * clickConfiguration(null);
-         *
-         * SINO
-         *
-         * idBoleteria = ID_GUARDADO_EN_SHARED_PREFERENCES
-         */
+        AsynCall = new AsyncCallerHorariosProximaSalida(this);
+
         loadListView();
         this.listView.requestFocus();
 
@@ -178,6 +182,8 @@ public class MainActivity extends Activity {
                             }
                         }
                 });
+
+                    AsynCall.execute();
                     /**
                      * ACA PODÉS LLAMAR AL RUNNABLE DEL WEB SERVICES Y TE EVITAS CORRER OTRO THREAD
                      */
@@ -192,5 +198,29 @@ public class MainActivity extends Activity {
         }).start();
     }
 
+    private class AsyncCallerHorariosProximaSalida extends AsyncTask<String, Void, Pair<String,ArrayList<Map<String,Object>>> > {
+
+        Context context; //contexto para largar la activity aca adentro
+
+        private AsyncCallerHorariosProximaSalida(Context context) {
+            this.context = context.getApplicationContext();
+        }
+
+        @Override
+        protected Pair<String,ArrayList<Map<String,Object>>> doInBackground(String... params) {
+            return new Pair("resultado", WebServices.getHorariosProximaSalida(idBoleteria, getApplicationContext()));
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+
+        @Override
+        protected void onPostExecute(Pair<String,ArrayList<Map<String,Object>>> result) {
+
+        }
+    }
 
 }
