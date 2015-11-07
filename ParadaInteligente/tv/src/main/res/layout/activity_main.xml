@@ -199,7 +199,7 @@
         android:id="@+id/listview_trips"
         android:layout_gravity="center_horizontal"
         android:divider="#f03e3d40"
-        android:dividerHeight="1sp"
+        android:dividerHeight="2sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:headerDividersEnabled="false" />

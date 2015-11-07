@@ -130,7 +130,7 @@
             android:layout_weight="2.8"
             android:weightSum="1"
             android:layout_gravity="center"
-            android:measureWithLargestChild="false">
+            >
 
             <TextView
                 android:layout_width="match_parent"

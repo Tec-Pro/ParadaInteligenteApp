@@ -3,25 +3,21 @@ package paradainteligente;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.Icon;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.util.Pair;
 import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.tecpro.paradainteligente.R;
+import com.tecpro.paradainteligente.WebServices;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.HashMap;
 import java.util.Map;
 
 public class MainActivity extends Activity {
@@ -49,43 +45,12 @@ public class MainActivity extends Activity {
 
         AsynCall = new AsyncCallerHorariosProximaSalida(this);
 
-        loadListView();
         this.listView.requestFocus();
 
         threadTimeAndUpdate();
     }
 
-    private void loadListView(){
-        ArrayList<Map<String,String>> trips = new ArrayList<>();
-        HashMap<String,String> trip =  new HashMap<>();
-        HashMap<String,String> trip2 =  new HashMap<>();
 
-        trip.put("destiny","Río Cuarto");
-        trip.put("route","Berrotarán - Baigorria - Elena");
-        trip.put("time","15:50");
-        trip.put("status","Con demora");
-        trip.put("demorated","5 min.");
-        trip.put("platform","44 a 55");
-        trip.put("unity", "152");
-        trips.add(trip);
-        trips.add(trip);
-        trips.add(trip);
-        trips.add(trip);
-        trips.add(trip);
-
-        trip2.put("destiny", "Berrotarán");
-        trip2.put("route","Berrotarán - Baigorria - Elena");
-        trip2.put("time","15:50");
-        trip2.put("status","En horario");
-        trip2.put("demorated","5 min.");
-        trip2.put("platform","44 a 55");
-        trip2.put("unity", "152");
-        trips.add(trip2);
-
-        trips.add(trip);
-        adaptador = new AdaptorTrips(this,trips);
-        listView.setAdapter(adaptador);
-    }
     private void focusButtonConfiguration(){
         ImageButton btnConfig = (ImageButton) findViewById(R.id.btn_configuration);
         btnConfig.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -122,6 +87,7 @@ public class MainActivity extends Activity {
                 /**
                  * ACA DEBERÍAS GUARDAR EL ID DE LA BOLETERIA
                  */
+                dataId.setId(String.valueOf(idBoleteria));
                 break;
         }
     }
@@ -181,16 +147,16 @@ public class MainActivity extends Activity {
                                     break;
                             }
                         }
-                });
-
+                    });
+                    AsynCall = new AsyncCallerHorariosProximaSalida(getApplicationContext());
                     AsynCall.execute();
                     /**
                      * ACA PODÉS LLAMAR AL RUNNABLE DEL WEB SERVICES Y TE EVITAS CORRER OTRO THREAD
                      */
 
-                      try {
+                    try {
                         Thread.sleep(60000);
-                   } catch (InterruptedException e) {
+                    } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
                 }
@@ -198,7 +164,7 @@ public class MainActivity extends Activity {
         }).start();
     }
 
-    private class AsyncCallerHorariosProximaSalida extends AsyncTask<String, Void, Pair<String,ArrayList<Map<String,Object>>> > {
+    private class AsyncCallerHorariosProximaSalida extends AsyncTask<String, Void, ArrayList<Map<String,String>> > {
 
         Context context; //contexto para largar la activity aca adentro
 
@@ -207,8 +173,8 @@ public class MainActivity extends Activity {
         }
 
         @Override
-        protected Pair<String,ArrayList<Map<String,Object>>> doInBackground(String... params) {
-            return new Pair("resultado", WebServices.getHorariosProximaSalida(idBoleteria, getApplicationContext()));
+        protected ArrayList<Map<String,String>> doInBackground(String... params) {
+            return WebServices.getHorariosProximaSalida(idBoleteria, getApplicationContext());
         }
 
         @Override
@@ -218,8 +184,10 @@ public class MainActivity extends Activity {
 
 
         @Override
-        protected void onPostExecute(Pair<String,ArrayList<Map<String,Object>>> result) {
-
+        protected void onPostExecute(ArrayList<Map<String,String>> result) {
+            if (result !=null )
+                adaptador = new AdaptorTrips(context,result);
+            listView.setAdapter(adaptador);
         }
     }
 

@@ -1,8 +1,6 @@
-package paradainteligente;
+package com.tecpro.paradainteligente;
 
-import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -12,6 +10,8 @@ import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by jacinto on 05/11/15.
@@ -27,7 +27,7 @@ public class WebServices {
     private static HttpTransportSE httpTransportSE = null;
 
 
-    public static ArrayList<String> getHorariosProximaSalida(int idBoleteria, Context context){
+    public static ArrayList<Map<String,String>> getHorariosProximaSalida(int idBoleteria, Context context){
         String result;
         ArrayList<String> ret = new ArrayList<>();
         request = new SoapObject(NAMESPACE, horariosProximaSalida); //le digo que metodo voy a llamar
@@ -72,11 +72,46 @@ public class WebServices {
                 i++;
             }
 
-          }
+        }
         catch(Exception e){
             e.printStackTrace();
         }
-        return ret;
+
+        /**
+         * BORRAR ESTOOOOOOO DESPUÉEEES
+         *
+         *
+         *
+         *
+         */
+        ArrayList<Map<String,String>> trips = new ArrayList<>();
+        HashMap<String,String> trip =  new HashMap<>();
+        HashMap<String,String> trip2 =  new HashMap<>();
+
+        trip.put("destiny","Río Cuarto");
+        trip.put("route","Berrotarán - Baigorria - Elena");
+        trip.put("time","15:50");
+        trip.put("status","Con demora");
+        trip.put("demorated","5 min.");
+        trip.put("platform","44 a 55");
+        trip.put("unity", "152");
+        trips.add(trip);
+        trips.add(trip);
+        trips.add(trip);
+        trips.add(trip);
+        trips.add(trip);
+
+        trip2.put("destiny", "La concha de tu madre");
+        trip2.put("route","Berrotarán - Baigorria - Elena");
+        trip2.put("time","15:50");
+        trip2.put("status","En horario");
+        trip2.put("demorated","5 min.");
+        trip2.put("platform","44 a 55");
+        trip2.put("unity", "152");
+        trips.add(trip2);
+
+        trips.add(trip);
+        return trips;
     }
 
 }
