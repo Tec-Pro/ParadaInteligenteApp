@@ -14,39 +14,38 @@
         android:showDividers="middle"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="20dp"
-        android:layout_gravity="center">
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="10dp">
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:weightSum="2"
             android:layout_weight="5.5">
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Río Cuarto"
                 android:id="@+id/lbl_destiny"
                 android:textStyle="normal"
                 android:textSize="20sp"
                 android:textColor="#f9f90800"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1" />
+                android:gravity="center" />
 
             <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:text="Los Cóndores - Berrotarán - Elena"
                 android:id="@+id/lbl_route"
                 android:textStyle="normal"
                 android:textSize="15sp"
                 android:textColor="@android:color/black"
                 android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_weight="1" />
+                android:gravity="center" />
         </LinearLayout>
 
         <LinearLayout
@@ -73,9 +72,9 @@
             android:orientation="vertical"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:weightSum="2"
             android:layout_gravity="center"
-            android:layout_weight="2.5">
+            android:layout_weight="2.5"
+            android:weightSum="2">
 
             <TextView
                 android:layout_width="match_parent"
@@ -86,8 +85,8 @@
                 android:textSize="20sp"
                 android:textColor="#f9f90800"
                 android:layout_gravity="center"
-                android:layout_weight="1"
-                android:gravity="center_vertical|center_horizontal" />
+                android:gravity="center"
+                android:layout_weight="1" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -98,9 +97,9 @@
                 android:textSize="15sp"
                 android:textColor="@android:color/black"
                 android:layout_gravity="center"
-                android:layout_weight="1"
                 android:visibility="visible"
-                android:gravity="center_horizontal" />
+                android:gravity="center_horizontal"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout

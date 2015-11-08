@@ -38,9 +38,11 @@ public class AdaptorTrips extends BaseAdapter {
         lblDemorated = (TextView) vistaReciclada.findViewById(R.id.lbl_demorated);
         lblPlatform = (TextView) vistaReciclada.findViewById(R.id.lbl_platform);
         lblUnity = (TextView) vistaReciclada.findViewById(R.id.lbl_unity);
-        if (trip.get("status").contains("demora")){//si esta demorado lo pongo rojo
+        if (trip.get("status").contains("emora")){//si esta demorado lo pongo rojo
             lblStatus.setTextColor(Color.argb(249, 249, 8, 0));
-            lblDemorated.setText(trip.get("demorated"));
+            lblDemorated.setText(trip.get("demorated") + " min.");
+            lblDemorated.setVisibility(View.VISIBLE);
+
         }else {
             lblStatus.setTextColor(Color.BLACK);
             lblDemorated.setVisibility(View.GONE);
